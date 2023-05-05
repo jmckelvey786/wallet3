@@ -1,0 +1,35 @@
+.text-2xl {
+    font-size: 25px !important;
+}
+
+.text-xl {
+    font-size: 20px !important;
+}
+
+.text-l {
+    font-size: 18px !important;
+}
+
+.text-m {
+    font-size: 16px !important;
+}
+
+.text-s {
+    font-size: 14px !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+

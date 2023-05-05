@@ -1,0 +1,28 @@
+:root {
+    --primary: #004835;
+    --secondary: #3b2600;
+}
+
+.bg-primary{
+    background-color: var(--primary);
+}
+
+.bg-secondary{
+    background-color: var(--secondary);
+}
+
+.txt-primary{
+    background-color: var(--primary);
+}
+
+.txt-secondary{
+    background-color: var(--secondary);
+}
+
+.txt-white {
+    color: whitesmoke
+}
+
+.txt-black {
+    color: black;
+}
