@@ -2,3 +2,31 @@
     background-color: white;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+.loader-parent {
+    position: absolute;
+    inset: 0;
+    background-color: rgb(32, 32, 32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+}
+
+.loader {
+    height: 80px;
+    width: 80px;
+    border: 5px solid whitesmoke;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: loader-anim 1s linear infinite;
+}
+
+@keyframes loader-anim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

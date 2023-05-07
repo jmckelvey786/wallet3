@@ -3,6 +3,8 @@ import {Col, Form, Row, message} from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../../apicalls/users';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { HideLoading, ShowLoading } from '../../redux/loaderslice';
 
 
 
@@ -45,10 +47,13 @@ function Register() {
     function handleConfirmPasswordChange (e) {
         setConfirmPassword(e.target.value);
     }
+    const dispatch = useDispatch;
     const navigate = useNavigate();
     const onFinish = async(values) => {
         try {
+            dispatch(ShowLoading());
             const response =  await RegisterUser(values);
+            dispatch(HideLoading());
             if (response.success) {
                 message.success(response.message);
                 navigate('/login');
@@ -56,6 +61,7 @@ function Register() {
                 message.error(response.message);
             }
         } catch (error) {
+            dispatch(HideLoading());
              message.error(error.message);
         }
     }
@@ -70,28 +76,28 @@ function Register() {
             <Form layout='vertical' onFinish={onFinish}>
                <Row gutter={16}>
                     <Col span={6}>
-                        <Form.Item label="First Name" name="firstName">
-                            <input type="text" value={ firstName || ""} onChange={(e) => handleFirstNameChange(e)}/>
+                        <Form.Item label="First Name" name="firstName" initialValue={firstName}>
+                            <input type="text" onChange={(e) => handleFirstNameChange(e)}/>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Last Name" name="lastName">
-                            <input type="text" value={lastName} onChange={handleLastNameChange}/>
+                        <Form.Item label="Last Name" name="lastName" initialValue={lastName}>
+                            <input type="text" onChange={handleLastNameChange}/>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Email" name="email">
-                            <input type="text" value={email} onChange={handleEmailChange}/>
+                        <Form.Item label="Email" name="email" initialValue={email}>
+                            <input type="text" onChange={handleEmailChange}/>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Phone Number" name="phoneNumber">
-                            <input type="text" value={phoneNumber} onChange={handlePhoneChange}/>
+                        <Form.Item label="Phone Number" name="phoneNumber" initialValue={phoneNumber}>
+                            <input type="text"  onChange={handlePhoneChange}/>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Identification Type" name="identificationType">
-                            <select value={identificationType} onChange={handleIdTypeChange}>
+                        <Form.Item label="Identification Type" name="identificationType" initialValue={identificationType}>
+                            <select onChange={handleIdTypeChange}>
                                 <option value="Driver's License">Driver's License</option>
                                 <option value="Passport">Passport</option>
                                 <option value="Social Security Card">Social Security Card</option>
@@ -99,23 +105,23 @@ function Register() {
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Identification Number" name="identificationNumber">
-                            <input type="text" value={identificationNumber} onChange={handleIdNumberChange}/>
+                        <Form.Item label="Identification Number" name="identificationNumber" initialValue={identificationNumber}>
+                            <input type="text"  onChange={handleIdNumberChange}/>
                         </Form.Item>
                     </Col>
                     <Col span={24}>
-                        <Form.Item label="Address" name="address">
-                            <textarea type="text" value={address} onChange={handleAddressChange}/>
+                        <Form.Item label="Address" name="address" initialValue={address}>
+                            <textarea type="text" onChange={handleAddressChange}/>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Password" name="password">
-                            <input type="password" value={password} onChange={handlePasswordChange}/>
+                        <Form.Item label="Password" name="password" initialValue={password}>
+                            <input type="password" onChange={handlePasswordChange}/>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item label="Confirm Password" name="confirmPassword">
-                            <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange}/>
+                        <Form.Item label="Confirm Password" name="confirmPassword" initialValue={confirmPassword}>
+                            <input type="password" onChange={handleConfirmPasswordChange}/>
                         </Form.Item>
                     </Col>
                 </Row> 

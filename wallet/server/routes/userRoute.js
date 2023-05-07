@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../models/userModel');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+const auth = require('../middleware/authmiddleware');
 
 
 //register user account
@@ -42,6 +43,7 @@ router.post('/register', async (req, res) => {
 //logiun user Account
 
 router.post('/login', async (req, res) => {
+    console.log(process.env.jwt_secret);
     try {
         let user = await User.findOne({
             email: req.body.email
@@ -65,11 +67,12 @@ router.post('/login', async (req, res) => {
         }
 
         //generate token
-        const token = jwt.sign({userId: user_id}, process.env.jwt_secret, {expiresIn: "1d"});
+        // const token = jwt.sign({userId: user._id}, process.env.jwt_secret, {expiresIn: "1d"});
+        const token = jwt.sign({userId: user._id}, 'wallet', {expiresIn: "1d"});
         res.send(
             {
                 message: "User Logged In Successfully",
-                data: data,
+                data: token,
                 success: true,
             });
     } catch (error) {
@@ -79,5 +82,26 @@ router.post('/login', async (req, res) => {
         });
     }
 })
+
+//get user info
+
+router.post("/get-user-info", auth, async (req, res)=> {
+    try{
+        const user = await User.findById(req.body.userId);
+        user.password = " ";
+        res.send(
+            {
+                message: "User info retrieved",
+                data: user,
+                success: true,
+            }
+        );
+    } catch (error) {
+        res.send({
+            message: error.message,
+            success: false
+        })
+    }
+});
 
 module.exports = router;

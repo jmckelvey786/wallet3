@@ -31,5 +31,19 @@
     cursor: pointer;
 }
 
+.text-white {
+    color: whitesmoke;
+}
+
+h1 {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+i {
+    font-size: 20px;
+}
+
+
 
 
