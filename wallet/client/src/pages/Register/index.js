@@ -47,7 +47,7 @@ function Register() {
     function handleConfirmPasswordChange (e) {
         setConfirmPassword(e.target.value);
     }
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const onFinish = async(values) => {
         try {
