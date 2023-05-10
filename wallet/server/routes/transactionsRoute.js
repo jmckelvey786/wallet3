@@ -62,7 +62,7 @@ router.post('/transfer-fund', AuthMiddleWare, async (req, res) => {
 
 //get all transactions for user
 
-router.post('/get-all-transactions-by-user', authMiddleware, async(req, res) => {
+router.post('/get-all-transactions-by-user', AuthMiddleWare, async(req, res) => {
     try {
         const transactions = await Transaction.find({$or : [{sender :req.body.userId}, {reciever : req.body.userId}]})
         .sort({ createdAt: -1})

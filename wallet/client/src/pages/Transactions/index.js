@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PageTitle from '../../components/pageTitle';
 import { Table } from 'antd';
-import TransferFundsModal from '../../../../server/models/transferFundsModal';
+import TransferFundsModal from './transferFundsModal'
 import {useDispatch, useSelector} from "react-redux";
 import { HideLoading, ShowLoading } from '../../redux/loaderslice';
 import { GetTransactionsOfUser } from '../../apicalls/transactions';
