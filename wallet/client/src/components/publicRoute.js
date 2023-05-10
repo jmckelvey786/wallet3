@@ -8,7 +8,7 @@ function PublicRoute(props) {
         if(localStorage.getItem("token")) {
             navigate('/');
         }
-    }, [])
+    }, [navigate])
 
     return (
         <div>{props.children}</div>

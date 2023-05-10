@@ -10,32 +10,32 @@ function DefaultLayout(children) {
     const userMenu = [
     {
         title: "Home",
-        icon: <i class="ri-home-line"></i>,
+        icon: <i className="ri-home-line"></i>,
         onClick: ()=> navigate('/'),
         path: "/",
     },
     {
         title: 'Transactions',
-        icon: <i class="ri-bank-line"></i>,
+        icon: <i className="ri-bank-line"></i>,
         onClick: ()=> navigate('/transactions'),
         path: "/transactions",
 
     },
     {
-        title: 'Requets',
-        icon: <i class="ri-hand-heart-line"></i>,
+        title: 'Requests',
+        icon: <i className="ri-hand-heart-line"></i>,
         onClick: ()=> navigate('/requests'),
          path: "/requests",
     },
     {
         title: 'Profile',
-        icon: <i class="ri-user-line"></i>,
+        icon: <i className="ri-user-line"></i>,
         onClick: ()=> navigate('/profile'),
          path: "/profile",
     },
     {
         title: 'Logout',
-        icon: <i class="ri-door-open-line"></i>,
+        icon: <i className="ri-door-open-line"></i>,
         onClick: ()=> {
             localStorage.removeItem('token');
             navigate('/login');
@@ -46,38 +46,38 @@ function DefaultLayout(children) {
     const adminMenu = [
     {
         title: "Home",
-        icon: <i class="ri-home-line"></i>,
+        icon: <i className="ri-home-line"></i>,
         onClick: ()=> navigate('/'),
         path: "/",
     },
     {
         title: 'Transactions',
-        icon: <i class="ri-bank-line"></i>,
+        icon: <i className="ri-bank-line"></i>,
         onClick: ()=> navigate('/transactions'),
         path: "/transactions",
 
     },
     {
         title: 'Requets',
-        icon: <i class="ri-hand-heart-line"></i>,
+        icon: <i className="ri-hand-heart-line"></i>,
         onClick: ()=> navigate('/requests'),
          path: "/requests",
     },
     {
         title: 'Profile',
-        icon: <i class="ri-user-line"></i>,
+        icon: <i className="ri-user-line"></i>,
         onClick: ()=> navigate('/profile'),
          path: "/profile",
     },
     {
         title: 'User',
-        icon: <i class="ri-user-settings-line"></i>,
+        icon: <i className="ri-user-settings-line"></i>,
         onClick: ()=> navigate('/users'),
          path: "/profile",
     },
     {
         title: 'Logout',
-        icon: <i class="ri-door-open-line"></i>,
+        icon: <i className="ri-door-open-line"></i>,
         onClick: ()=> {
             localStorage.removeItem('token');
             navigate('/login');
@@ -93,9 +93,9 @@ function DefaultLayout(children) {
         <div className='layout'>
             <div className='sidebar text-white'>
             <div className='menu'>
-                {menuToRender.map((item)=>{
+                {menuToRender.map((item, i)=>{
                     const isActive = window.location.pathname === item.path;
-                    return (<div className={`menu-item ${isActive ? "active-menu-item" : ""}`} onClick={item.onClick}>
+                    return (<div key={i} className={`menu-item ${isActive ? "active-menu-item" : ""}`} onClick={item.onClick}>
                         {item.icon}
                         {!collapsed && <h1 className='text-white text-sm'>{item.title}</h1>}
                     </div>);
@@ -105,16 +105,16 @@ function DefaultLayout(children) {
             <div className='body'>
                 <div className='header flex justify-between items-center'>
                     <div className='text-white'>
-                        {collapsed && <i class="ri-close-line"
+                        {!collapsed && <i className="ri-close-line"
                         onClick={() =>setCollapsed(!collapsed)} ></i>}
-                        {!collapsed && <i class="ri-menu-4-line text-white"
+                        {collapsed && <i className="ri-menu-4-line text-white"
                         onClick={() =>setCollapsed(!collapsed)}></i>}
                     </div>
                     <div>
-                        <h1 className='text-xl text-white'>Wallet</h1>
+                        <h1 className='text-xl txt-secondary'>Wallet</h1>
                     </div>
                     <div>
-                        <h1 className='text-sm underline text-white'>{user?.firstName} {user?.lastName}</h1>
+                        <h1 className='txt-sm underline txt-white'>{user?.firstName} {user?.lastName}</h1>
                     </div>
                 </div>
                 <div className='content'>Content</div>

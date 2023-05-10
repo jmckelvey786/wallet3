@@ -6,8 +6,10 @@ const app = express();
 app.use(express.json());
 const dbConfig = require('./config/dbConfig.js')
 const userRoute = require('./routes/userRoute.js');
+const transactionsRoute = require('./routes/transactionsRoute.js');
 
 app.use('/api/users', userRoute);
+app.use('/api/transactions', transactionsRoute);
 
 const PORT = process.env.PORT || 5000;
 

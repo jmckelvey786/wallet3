@@ -1,6 +1,6 @@
 :root {
     --primary: #004835;
-    --secondary: #3b2600;
+    --secondary: #e79908;
 }
 
 .bg-primary{
@@ -16,7 +16,7 @@
 }
 
 .txt-secondary{
-    background-color: var(--secondary);
+    color: var(--secondary);
 }
 
 .txt-white {
@@ -25,4 +25,15 @@
 
 .txt-black {
     color: black;
+}
+
+.success-bg {
+    background-color: #029a71;
+    padding: 10px;
+    color: white;
+}
+
+.error-bg {
+    background-color: red;
+    padding: 10px;
 }
