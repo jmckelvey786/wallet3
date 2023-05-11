@@ -8,7 +8,7 @@ import './stylesheets/layout.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Home from "./pages/Home";
+import Home from "./pages/Home/index";
 import ProtectedRoute from '../src/components/protectedRoute';
 import PublicRoute from './components/publicRoute';
 import { RegisterUser } from './apicalls/users';
@@ -16,6 +16,7 @@ import Loader from './components/loader';
 import { useSelector } from 'react-redux';
 import DefaultLayout from './components/DefaultLayout';
 import Transactions from './pages/Transactions';
+import PageTitle from './components/pageTitle';
 // const env = require("dotenv").config();
 
 
@@ -28,11 +29,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* <Route path="/login" element={<PublicRoute><Login/></PublicRoute>}/>
-          <Route path="/register" element={<PublicRoute><Register/></PublicRoute>}/>
-          <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}/> */}
+          <Route path="/register" element={<PublicRoute><Register/></PublicRoute>}/> */}
+          <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}/>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
-          <Route path="/" element={<DefaultLayout><Home/></DefaultLayout>}></Route>
+          {/* <Route path="/" element={<DefaultLayout><Home/><PageTitle/></DefaultLayout>}></Route> */}
+          {/* <Route path="/" element={<Home></Home>}></Route> */}
           <Route path="/transactions" element={<DefaultLayout><Transactions/></DefaultLayout>}></Route>
         </Routes>
       </BrowserRouter>
