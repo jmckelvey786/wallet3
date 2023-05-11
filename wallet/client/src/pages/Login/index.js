@@ -63,7 +63,7 @@ function Login() {
                     <button className='primary-contained-btn w-100'type="submit">Login</button>
                 </div>
                 <br></br>
-                <h2 className='text-s text-underline' onClick={()=>navigate("/register")}>Not a member, Register</h2>
+                <h2 className='text-s text-underline' onClick={()=>{navigate("/register")}}>Not a member, Register</h2>
             </Form>
             </div>
         </div>

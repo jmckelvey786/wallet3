@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 
-function DefaultLayout(children) {
-    const {collapsed , setCollapsed} = React.useState(false);
+function DefaultLayout({children}) {
+    const [collapsed, setCollapsed] = useState(false);
     const {user} = useSelector((state) => state.users);
     const navigate = useNavigate();
     const userMenu = [

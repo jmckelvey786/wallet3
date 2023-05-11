@@ -30,7 +30,7 @@ function App() {
         <Routes>
           {/* <Route path="/login" element={<PublicRoute><Login/></PublicRoute>}/>
           <Route path="/register" element={<PublicRoute><Register/></PublicRoute>}/> */}
-          <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+          <Route path="/" element={<PublicRoute><Home/></PublicRoute>}/>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
           {/* <Route path="/" element={<DefaultLayout><Home/><PageTitle/></DefaultLayout>}></Route> */}
